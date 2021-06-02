@@ -1,0 +1,54 @@
+@media only screen and (max-width: 789px) {
+  h1{
+    font-size: 1.2em;
+    
+  }
+  
+}
+
+.column{
+    
+    width: 50%;
+  }
+
+  img{
+    width: 100%;
+  }
+
+  #carta{
+    border: double;
+    border-color: rgb(0, 0, 0);
+  }
+
+  #cv{
+    border: double;
+    border-color: rgb(0, 0, 0);
+  }
+
+  h1:hover{
+    border-color: rgb(0, 221, 66);
+    cursor: pointer;
+  }
+  h1{
+    background-color: rgb(241, 241, 241);
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    border: dotted;
+    width: auto;
+    
+    
+  }
+
+  .row{
+    
+      margin-top: 1%;
+      margin-bottom: 10%;
+      margin-right: 20%;
+      margin-left: 20%;
+    
+  }
+
+ 
+  
+  
+ 

@@ -1,0 +1,47 @@
+@media only screen and (max-width: 767px) {
+    .medicos{
+        padding: 100%;
+    }
+
+    #apeLabel{
+        display: none;
+    }
+
+   
+
+    
+  }
+
+  
+
+.contenedor{
+    
+    margin: 15%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    width: 65%;
+    padding-bottom: 10%;
+}
+
+
+
+
+.card{
+    font-size: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    width: 100%;
+}
+
+.header-title{
+    font-size: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    width: 100%;
+}
+
+h2{
+    font-family: 'Acme', sans-serif;
+    width: 100%;
+}
+
+
+

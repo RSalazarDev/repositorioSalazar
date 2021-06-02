@@ -1,0 +1,72 @@
+<div class="container">
+
+<ng-template [ngIf]='isLogged()' [ngIfElse]='guest'>
+    <h3>Citas</h3>
+<div class="list-group">
+    <hr>
+    <div class="px-4" style="height: 1rem; margin-top: -1%;">
+        <div class="row">
+            <div class="col-sm header-title">
+                <p>Medico</p>
+            </div>
+            <div class="col-sm header-title">
+                <p>Fecha</p>
+            </div>
+            <div class="col-sm header-title">
+                <p>Estado</p>
+            </div>
+            <div class="col-sm header-title">
+                <p>Sala</p>
+            </div>
+            <div class="col-sm header-title">
+                <p>Operacion</p>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <div class="card mt-2 py-2 px-2" *ngFor='let cita of citas' style="height: 5rem;">
+        <div class="row">
+            <div class="col">
+                <p>{{ cita.medico.nombre }} {{ cita.medico.apellidos }} ({{ cita.medico.especialidad }})</p>
+            </div>
+            <div class="col-sm">
+                <p>{{ cita.fecha }}</p>
+            </div>
+            <div class="col-sm">
+                <p>{{ cita.estado }}</p>
+            </div>
+            <div class="col-sm">
+                <p>{{ cita.sala.id }}</p>
+            </div>
+            <div class="col-sm">
+                <div><p (click)="borrarCita(cita)" class="btn btn-primary">Pincha para borrar la cita</p></div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<h1>Crea una nueva cita</h1>
+<form [formGroup]="formularioCita" (submit)="concertarCita()">
+    <div class="form-group">
+      <label>Fecha</label>
+      <input type="date" class="form-control"  aria-describedby="emailHelp" formControlName="fecha">
+    </div>
+    <div class="form-group">
+        Tipo de cita
+        <select name="medico" [(ngModel)]="seleccionado" formControlName="medico">
+            <option [value]="medico.id" *ngFor="let medico of medicos">{{medico.especialidad}} ( {{medico.nombre}} {{medico.apellidos}} )</option>
+        </select>
+        Sala
+        <select name="sala"  formControlName="sala">
+            <option [value]="sala.id" *ngFor="let sala of salas">{{sala.id}}</option>
+        </select>
+      </div>
+    <input type="submit" class="btn btn-primary" value="Pedir Cita">
+  </form>
+
+</ng-template>
+<ng-template #guest>
+   Inicia sesion para concertar una cita
+</ng-template>
+</div>

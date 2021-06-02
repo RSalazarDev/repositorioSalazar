@@ -1,0 +1,25 @@
+
+
+<div class="row">
+    <div class="col" id="col1">
+        <h1>CÓMO ENCONTRARNOS</h1>
+        <div id='posicionMapa' style='height: 60vh'></div>
+    </div>
+    <div class="col" id="col2">
+        
+      <h1>OTROS CENTROS</h1>
+        <div class="card" >
+            
+            <ul *ngFor='let otro of otros' class="list-group list-group-flush" >
+              <button (click)="cambiar(otro)" class="list-group-item border-secondary" id="zona">
+                Nombre: {{otro.nombre}} <br>
+                Localidad: {{otro.localidad}} <br>
+                Direccion: {{otro.direccion}} <br>
+                Telefono: {{otro.telefono}}
+              </button>
+            </ul>
+          </div>
+        
+    </div>
+  </div>
+

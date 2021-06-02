@@ -1,0 +1,47 @@
+@media only screen and (max-width: 975px) {
+  .navbar-toggler{
+    margin-left: 5%;
+  }
+  
+}
+
+
+
+  .fa-sign-in{
+    font-size: 2em;
+    
+  }
+
+  .navbar-toggler{
+    color: white;
+    border-radius: 5%;
+    border-style: double;
+    border-color: rgb(1, 107, 110);
+  }
+
+
+
+  
+  .navbar{
+      
+  
+  font-family: 'Cormorant Unicase', serif;
+  font-size: 1.3em;
+
+  }
+
+  a{
+  font-family: 'Cormorant Unicase', serif;
+  font-size: 1.3em;
+  }
+        
+  .centro{
+  font-size: 1.7em;
+  }
+
+  .btn{
+    font-family: 'Acme', sans-serif;
+    font-size: 1.7em;
+  }
+
+

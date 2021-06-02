@@ -1,0 +1,28 @@
+label{
+    font-size: 2em;
+    font-family: 'Anton', sans-serif;
+}
+
+h1{
+    width: auto;
+    margin: 5%;
+    font-size: 4em;
+    color: rgb(47, 142, 219);
+    text-align: center;
+    background-color: rgb(236, 236, 236);
+    border-radius: 20%;
+    border-style: dotted;
+    border-color: rgb(0, 137, 250);
+    font-family: 'Anton', sans-serif;
+}
+
+.contenedor{
+    padding: 1%;
+    
+    width: auto;
+    margin: 2%;
+    background-color: rgb(230, 230, 230);
+    border-radius:2%;
+    border-style: dotted;
+    border-color: rgb(0, 137, 250);
+}

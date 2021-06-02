@@ -1,0 +1,23 @@
+p{
+    font-family: 'Oswald', sans-serif;
+}
+
+.card{
+    font-size: 22px;
+}
+
+h1{
+    font-family: 'Acme', sans-serif;
+}
+
+.jumbotron{
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+@media only screen and (max-width: 800px) {
+    .jumbotron{
+        width: 100%;
+        margin: 0;
+    }
+  }
