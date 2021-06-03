@@ -57,6 +57,6 @@ export class UsuariosService {
   }
 
   logOut(): void {
-    localStorage.removeItem('userToken')
+    localStorage.removeItem('userToken');
   }
 }

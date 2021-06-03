@@ -3,6 +3,13 @@ label{
     font-family: 'Anton', sans-serif;
 }
 
+.alert{
+    width: fit-content;
+    margin: auto;
+    font-size: 1.1em;
+    
+}
+
 input{
     font-size: 1em;
     

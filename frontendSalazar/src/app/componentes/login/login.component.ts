@@ -25,17 +25,19 @@ export class LoginComponent implements OnInit {
   login() {
     this.servicioUsuario.login(this.formularioLogin.value).subscribe(
       respuesta => {
-        console.log(respuesta)
+        
  
-        if (respuesta="Faltan parámetros") {
-          this.error  = respuesta;
-          console.log("nono")
-        }else{
-          
-        this.servicioUsuario.guardarToken(respuesta.token);
-        this.irHacia.navigate(["/citas"])
-      }
-    }
+        
+          console.log(respuesta)
+          this.servicioUsuario.guardarToken(respuesta.token);
+          this.irHacia.navigate(["/citas"])
+        },
+        error => {
+          console.log(error)
+          this.error = error.error.error
+        }
     )
+    }
+    
   }
-}
+

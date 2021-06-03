@@ -4,25 +4,43 @@ label{
 }
 
 h1{
-    width: auto;
-    margin: 5%;
+    width: 30%;
+    margin: auto;
     font-size: 4em;
-    color: rgb(47, 142, 219);
+    color: rgb(2, 19, 22);
     text-align: center;
     background-color: rgb(236, 236, 236);
     border-radius: 20%;
-    border-style: dotted;
-    border-color: rgb(0, 137, 250);
+    border-style: double;
+    font-style: oblique;
+    border-color: rgb(39, 39, 39);
     font-family: 'Anton', sans-serif;
 }
 
 .contenedor{
     padding: 1%;
     
-    width: auto;
-    margin: 2%;
+    width: 30%;
+    margin: auto;
+    height:fit-content;
     background-color: rgb(230, 230, 230);
     border-radius:2%;
-    border-style: dotted;
-    border-color: rgb(0, 137, 250);
+    border-style: double;
+    border-color: rgb(37, 37, 37);
+}
+
+@media only screen and (max-width: 1940px) {
+    h1{
+        width: 100%;
+        margin: auto;
+        
+    }
+    
+    .contenedor{
+        
+        width: 100%;
+        margin: auto;
+        
+    
+  }
 }

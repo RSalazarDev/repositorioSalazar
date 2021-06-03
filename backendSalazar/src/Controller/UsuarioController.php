@@ -107,7 +107,8 @@ class UsuarioController extends AbstractController {
                 'email' => $usuario->getEmail(),
                 'nombre' => $usuario->getNombre(),
                 'apellidos' => $usuario->getApellidos(),
-                'seguridad_social' => $usuario->getSeguridadSocial()
+                'telefono' => $usuario->getTelefono(),
+                's_social' => $usuario->getSeguridadSocial()
             ];
 
             return new JsonResponse($data, Response::HTTP_OK);
@@ -129,21 +130,31 @@ class UsuarioController extends AbstractController {
         if ($usuario) {
             $data = json_decode($request->getContent(), true);
             
-            $pwd = $data['password'];
+            
             $nombre = $data['nombre'];
             $apellidos = $data['apellidos'];
             $telefono = $data['telefono'];
             $social = $data['social'];
             
 
-            if (!empty($password)) {
-                $usuario->setPassword(password_hash($password, PASSWORD_BCRYPT));
+            
+            if (!empty($nombre)) {
+                $usuario->setNombre($nombre);
+            }
+            if (!empty($apellidos)) {
+                $usuario->setApellidos($apellidos);
+            }
+            if (!empty($telefono)) {
+                $usuario->setTelefono($telefono);
+            }
+            if (!empty($social)) {
+                $usuario->setSeguridadSocial($social);
             }
             
-            $usuario->setNombre($nombre);
-            $usuario->setApellidos($apellidos);
-            $usuario->setTelefono($telefono);
-            $usuario->setSeguridadSocial($social);
+            
+            
+            
+            
             
             $em->persist($usuario);
             $em->flush();
@@ -163,6 +174,10 @@ class UsuarioController extends AbstractController {
 
         $usuario = $auth->getUser($credenciales, $userProvider);
 
+        if($usuario->getCitas()->count()>0){
+            return new JsonResponse(['error' => 'Este usuario tiene citas pendientes, cancele sus citas por favor'], Response::HTTP_UNAUTHORIZED);
+        }
+        
         if ($usuario) {
             $em->remove($usuario);
             $em->flush();

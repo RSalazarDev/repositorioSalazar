@@ -1,0 +1,18 @@
+.btn{
+    width: 100%;
+    font-size: 1.8vh;
+    padding: 2px;
+    margin: 0.3em;
+    text-align: center;
+}
+
+form{
+    width: 100%;
+    margin: auto;
+}
+
+
+.cont{
+    width: 70%;
+    margin: auto;
+}

@@ -24,14 +24,17 @@ class SalaController extends AbstractController
         $salas = $repositorio->findAll();
         $data = [];
         foreach ($salas as $sala) {
-           
-            $data[] = [
+           if(($sala->getEstado())==true){
+               $data[] = [
                 'id' => $sala->getId(),
                 'estado' => $sala->getEstado()
             ];
+           }
+            
         }
 
         return new JsonResponse($data, Response::HTTP_OK);
     }
+    
 
 }

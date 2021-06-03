@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  margin: 0;
-  background-image: url("assets/public/inicio.jpg");
-  background-size: auto;
-  background-position: left top;
+  
+  background:
+  
+  url("assets/public/inicio.jpg");
+  
   
 }
 

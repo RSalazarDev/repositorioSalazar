@@ -1,47 +1,76 @@
-@media only screen and (max-width: 767px) {
-    .medicos{
-        padding: 100%;
-    }
+@media only screen and (max-width: 1050px) {
+  .estiloDefecto {
+    display: none;
+    visibility: hidden;
+  }
 
-    #apeLabel{
-        display: none;
-    }
+  .estiloMovil {
+    display: inline-block;
+    visibility: visible;
+    
+    width: 100%;
+    padding: 0;
+  }
 
-   
+ 
 
+  .a{
+    width: 60%;
+    margin: auto;
+    
     
   }
 
+  .btn{
+      width: 100%;
+      margin: 0.2vh;
+
+  }
+
+  h1{
+      font-size: 2.2vh;
+      
+  }
+
+  .card{
+    border-style: double;
+    border-color: rgba(0, 132, 172, 0.459);
+    margin-top: 2vh;
+  }
+
   
-
-.contenedor{
-    
-    margin: 15%;
-    margin-top: 2%;
-    margin-bottom: 5%;
-    width: 65%;
-    padding-bottom: 10%;
 }
 
+@media only screen and (min-width: 1051px) {
+
+.estiloMovil {
+    display:none;
+    visibility: hidden;
+  }
 
 
-
-.card{
-    font-size: 2rem;
-    font-family: 'JetBrains Mono', monospace;
-    width: 100%;
+.contenedor {
+  margin: 15%;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  width: 65%;
+  padding-bottom: 10%;
 }
 
-.header-title{
-    font-size: 2rem;
-    font-family: 'JetBrains Mono', monospace;
-    width: 100%;
+.card {
+  font-size: 2rem;
+  font-family: "JetBrains Mono", monospace;
+  width: 100%;
 }
 
-h2{
-    font-family: 'Acme', sans-serif;
-    width: 100%;
+.header-title {
+  font-size: 2rem;
+  font-family: "JetBrains Mono", monospace;
+  width: 100%;
 }
 
-
-
+h2 {
+  font-family: "Acme", sans-serif;
+  width: 100%;
+}
+}

@@ -41,6 +41,7 @@ export class MapaComponent implements OnInit {
       }
     );
     trozos.addTo(this.mapa);
+
   }
 
   
@@ -50,7 +51,7 @@ export class MapaComponent implements OnInit {
     this.mapa.panTo(new L.LatLng(o.latitud, o.longitud));
     L.marker([o.latitud, o.longitud])
       .addTo(this.mapa)
-      .bindPopup('Centro Médico ' + o.nombre)
+      .bindPopup('' + o.nombre)
       .openPopup();
   }
 }

@@ -1,5 +1,17 @@
-<div class="container">
 
+<div *ngIf='mensaje' class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    {{mensaje}}
+</div>
+
+
+<div class="container" id="estiloDefecto">
+    
+    
+        
 <ng-template [ngIf]='isLogged()' [ngIfElse]='guest'>
     <h3>Citas</h3>
 <div class="list-group">
@@ -50,11 +62,11 @@
 <form [formGroup]="formularioCita" (submit)="concertarCita()">
     <div class="form-group">
       <label>Fecha</label>
-      <input type="date" class="form-control"  aria-describedby="emailHelp" formControlName="fecha">
+      <input type="date" id="datefield" class="form-control"  aria-describedby="emailHelp" formControlName="fecha" min={{hoy}} >
     </div>
     <div class="form-group">
         Tipo de cita
-        <select name="medico" [(ngModel)]="seleccionado" formControlName="medico">
+        <select name="medico" formControlName="medico">
             <option [value]="medico.id" *ngFor="let medico of medicos">{{medico.especialidad}} ( {{medico.nombre}} {{medico.apellidos}} )</option>
         </select>
         Sala
@@ -69,4 +81,40 @@
 <ng-template #guest>
    Inicia sesion para concertar una cita
 </ng-template>
+
 </div>
+
+
+<div id="estiloMovil" class="container">
+    <div class="acordeon" *ngFor='let cita of citas' >
+    <a class="btn btn-primary" data-toggle="collapse" href="#{{cita.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+        {{cita.medico.especialidad}} --- {{cita.fecha}}
+      </a>
+    <div class="collapse" id="{{cita.id}}">
+      <div class="card card-body card-accordeon">
+        <strong>Estado</strong> {{cita.estado}} <strong>Sala</strong> {{cita.sala.id}}  <strong>Medico</strong> {{cita.medico.nombre}}
+      </div>
+    </div>
+</div>
+<h1>Crea una nueva cita</h1>
+<form [formGroup]="formularioCita" (submit)="concertarCita()">
+    <div class="form-group">
+      <label>Fecha</label>
+      <input type="date" class="form-control"  aria-describedby="emailHelp" formControlName="fecha">
+    </div>
+    <div class="form-group">
+        <p>Tipo de cita</p>
+        <select name="medico" id="medico"  formControlName="medico">
+            <option [value]="medico.id" *ngFor="let medico of medicos">{{medico.especialidad}} ( {{medico.nombre}} {{medico.apellidos}} )</option>
+        </select>
+        <p>Sala</p>
+        <select name="sala" id="sala"  formControlName="sala">
+            <option [value]="sala.id" *ngFor="let sala of salas">{{sala.id}}</option>
+        </select>
+      </div>
+    <input type="submit" class="btn btn-primary" value="Pedir Cita">
+  </form>
+
+
+</div>
+

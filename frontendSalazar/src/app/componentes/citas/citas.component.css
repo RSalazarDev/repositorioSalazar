@@ -1,0 +1,57 @@
+#estiloMovil {
+  display: none;
+  visibility: hidden;
+}
+
+
+.alert{
+  width: 60%;
+  margin: auto;
+  font-size: 2em;
+}
+
+@media only screen and (max-width: 1200px) {
+  #estiloDefecto {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #estiloMovil {
+    display: contents;
+    visibility: visible;
+
+    text-align: center;
+    padding: 2px;
+    
+  }
+
+  .acordeon{
+    width: 100%;
+    padding: 1%;
+   
+  }
+
+  .card-accordeon{
+    border-style: dashed;
+    border-color: rgb(0, 106, 177);
+    
+  }
+
+  select{
+    display:inline-block;
+   
+  }
+
+  #medico{
+    width: 100%;
+  }
+  #sala{
+    width: 20%;
+    align-self: auto;
+    text-align: left;
+  }
+
+ 
+}

@@ -1,60 +1,112 @@
-
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark ">
-    <a id="logo" class="navbar-brand mt-3 py-3 px-4 text-white centro" routerLink="/" routerLinkActive="{{activo3}}" ><i class="fas fa-heartbeat" ></i>Centro Medico</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        
-        <li class="nav-item">
-            <a class="nav-link  text-white mt-3 py-3 px-4" routerLink="/medicos" routerLinkActive="{{activo1}}" ><i class="fas fa-user-md"></i> MEDICOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white mt-3 py-3 px-4" routerLink="/mapa" routerLinkActive="{{activo1}}" ><i class="fas fa-map-pin"></i> UBICACIÓN</a>
-        </li>  
-        <li class="nav-item" *ngIf='isLogged()'>
-          <a class="nav-link text-white mt-3 py-3 px-4" routerLink="/citas" routerLinkActive="{{activo1}}" ><i class="fas fa-calendar-plus-o"></i> CITAS</a>
-        </li>  
-        <li class="nav-item" id="about">
-          <a class="nav-link text-white mt-3 py-3 px-4" routerLink="/about" routerLinkActive="{{activo1}}" ><i class="fas fa-info"></i> SOBRE MI</a>
-        </li>   
-        
-      </ul>
-    </div>  
-  </nav>
-  <div class="pos-f-t">
-    <div class="collapse" id="navbarToggleExternalContent">
-      <div class="bg-dark p-4">
-        <ng-template [ngIf]='isLogged()' [ngIfElse]='guest'>
-            <ul>
-            <li class="nav-item text-light">
-                <a class="nav-link mt-3 py-10 px-4 mr-4 text-white  btn btn-primary" routerLink="/perfil" routerLinkActive="{{activo2}}" >Editar Perfil</a>
-            </li>
-            <li class="nav-item text-light">
-                <a class="nav-link mt-3 py-10 px-4 mr-4 text-white  btn btn-primary"  (click)="logout()" routerLinkActive="{{activo2}}" >Cerrar sesión</a>
-            </li>
-        </ul>
-        </ng-template>
-        <ng-template #guest>
-            <ul  class="navbar-nav">
-            <li class="nav-item text-light">
-                <a class="nav-link mt-3 py-10 px-4 mr-4 text-white btn btn-primary" routerLink="/login" routerLinkActive="{{activo2}}" >Login</a>
-            </li>
-            <li class="nav-item text-light">
-                <a class="nav-link mt-3 py-10 px-4  mr-4 text-white btn btn-primary" routerLink="/registrar" routerLinkActive="{{activo2}}" >Registro</a>
-            </li>
-        </ul>
-        </ng-template> 
-      </div>
-    </div>
-    
-    <nav class="navbar navbar-dark registro">
-      
-      <button class="navbar-toggler fa fa-sign-in btn-primary  bg-primary" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-        
-        
-      </button>
-    </nav>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <a
+    id="logo"
+    class="navbar-brand mt-3 py-3 px-4 text-white centro"
+    routerLink="/"
+    routerLinkActive="{{ activo3 }}"
+    ><i class="fas fa-heartbeat"></i>Centro Médico</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapsibleNavbar"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a
+          class="nav-link text-white mt-3 py-3 px-4"
+          routerLink="/medicos"
+          routerLinkActive="{{ activo1 }}"
+          ><i class="fas fa-user-md"></i> MEDICOS</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link text-white mt-3 py-3 px-4"
+          routerLink="/mapa"
+          routerLinkActive="{{ activo1 }}"
+          ><i class="fas fa-map-pin"></i> UBICACIÓN</a
+        >
+      </li>
+      <li class="nav-item" *ngIf="isLogged()">
+        <a
+          class="nav-link text-white mt-3 py-3 px-4"
+          routerLink="/citas"
+          routerLinkActive="{{ activo1 }}"
+          ><i class="fas fa-calendar-plus-o"></i> CITAS</a
+        >
+      </li>
+      <li class="nav-item" id="about">
+        <a
+          class="nav-link text-white mt-3 py-3 px-4"
+          routerLink="/about"
+          routerLinkActive="{{ activo1 }}"
+          ><i class="fas fa-info"></i> SOBRE MI</a
+        >
+      </li>
+    </ul>
   </div>
-  
+</nav>
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <ng-template [ngIf]="isLogged()" [ngIfElse]="guest">
+        <ul>
+          <li class="nav-item text-light">
+            <a
+              class="nav-link mt-3 py-10 px-4 mr-4 text-white btn btn-primary"
+              routerLink="/perfil"
+              routerLinkActive="{{ activo2 }}"
+              >Editar Perfil</a
+            >
+          </li>
+          <li class="nav-item text-light">
+            <a
+              class="nav-link mt-3 py-10 px-4 mr-4 text-white btn btn-primary"
+              (click)="logout()"
+              routerLinkActive="{{ activo2 }}"
+              >Cerrar sesión</a
+            >
+          </li>
+          
+        </ul>
+      </ng-template>
+      <ng-template #guest>
+        <ul class="navbar-nav">
+          <li class="nav-item text-light">
+            <a
+              class="nav-link mt-3 py-10 px-4 mr-4 text-white btn btn-primary"
+              routerLink="/login"
+              routerLinkActive="{{ activo2 }}"
+              >Login</a
+            >
+          </li>
+          <li class="nav-item text-light">
+            <a
+              class="nav-link mt-3 py-10 px-4 mr-4 text-white btn btn-primary"
+              routerLink="/registrar"
+              routerLinkActive="{{ activo2 }}"
+              >Registro</a
+            >
+          </li>
+        </ul>
+      </ng-template>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-dark registro">
+    <button
+      class="navbar-toggler fa fa-sign-in btn-primary bg-primary"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarToggleExternalContent"
+      aria-controls="navbarToggleExternalContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    ></button>
+  </nav>
+</div>
