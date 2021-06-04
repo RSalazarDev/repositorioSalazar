@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2021 at 11:31 PM
+-- Generation Time: Jun 04, 2021 at 03:12 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -18,8 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `centro`
+-- Database: `basesalazar`
 --
+CREATE DATABASE IF NOT EXISTS `basesalazar` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `basesalazar`;
 
 -- --------------------------------------------------------
 
@@ -32,18 +34,19 @@ CREATE TABLE `cita` (
   `medico_id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `fecha` date NOT NULL,
-  `estado` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL
+  `estado` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sala_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `cita`
 --
 
-INSERT INTO `cita` (`id`, `medico_id`, `usuario_id`, `fecha`, `estado`) VALUES
-(1, 8, 1, '2021-03-17', 'Activa'),
-(2, 7, 1, '2021-03-25', 'Activa'),
-(3, 9, 1, '2021-03-10', 'Activa'),
-(6, 10, 1, '2021-05-11', 'Activa');
+INSERT INTO `cita` (`id`, `medico_id`, `usuario_id`, `fecha`, `estado`, `sala_id`) VALUES
+(36, 3, 16, '2021-06-29', 'Activa', 4),
+(39, 4, 16, '2021-08-11', 'Activa', 4),
+(40, 4, 16, '2021-08-11', 'Activa', 7),
+(41, 1, 16, '2021-08-27', 'Activa', 2);
 
 -- --------------------------------------------------------
 
@@ -62,7 +65,10 @@ CREATE TABLE `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20210311195744', '2021-03-11 20:58:03', 286);
+('DoctrineMigrations\\Version20210311195744', '2021-03-11 20:58:03', 286),
+('DoctrineMigrations\\Version20210516165202', '2021-05-16 18:52:16', 29),
+('DoctrineMigrations\\Version20210516165832', '2021-05-16 18:58:38', 27),
+('DoctrineMigrations\\Version20210524142133', '2021-05-24 16:23:26', 69);
 
 -- --------------------------------------------------------
 
@@ -127,6 +133,59 @@ INSERT INTO `medico` (`id`, `especialidad_id`, `nombre`, `apellidos`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `otro`
+--
+
+CREATE TABLE `otro` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `direccion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `localidad` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefono` varchar(9) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `latitud` decimal(15,10) NOT NULL,
+  `longitud` decimal(15,10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `otro`
+--
+
+INSERT INTO `otro` (`id`, `nombre`, `direccion`, `localidad`, `telefono`, `latitud`, `longitud`) VALUES
+(1, 'Centro Medico Santa María', 'Avenida Paz Numero 98', 'Quintanar De La Orden', '999999999', '39.5920170000', '-3.0386920000'),
+(2, 'Centro Medico Santa Lucia', 'Plaza de España', 'Villa De Don Fadrique', '999999999', '39.6179040000', '-3.2177570000'),
+(3, 'Centro Médico Santa Catalina', 'Calle Talavera de La Reina', 'Toledo', '999999999', '39.8663700000', '-4.0279180000'),
+(4, 'Centro Médico Santa Luisa', 'Calle Fray Luis de León Baja', 'Mota del Cuervo', '999999999', '39.5001590000', '-2.8702780000'),
+(5, 'Centro Médico Santa Mariana', 'Calle Cánovas', 'Miguel Esteban', '999999999', '39.5223080000', '-3.0772050000'),
+(6, 'Centro Médico Santa Tobosa', 'Calle Dulcinea', 'El Toboso', '999999999', '39.5134850000', '-2.9961170000'),
+(7, 'Centro Médico Santa Lupita', 'Calle Peralta', 'Lillo', '999999999', '39.7224290000', '-3.3033780000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sala`
+--
+
+CREATE TABLE `sala` (
+  `id` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sala`
+--
+
+INSERT INTO `sala` (`id`, `estado`) VALUES
+(1, 0),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 0),
+(6, 1),
+(7, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `usuario`
 --
 
@@ -146,11 +205,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `email`, `roles`, `password`, `nombre`, `apellidos`, `telefono`, `seguridad_social`) VALUES
-(1, 'ccc@gmail.com', '[]', '$2y$10$WvenZR.ug161OXLgq.5BruBZo5IdhD8myCGXFXjSMBNRFxdW287iq', 'cccd', 'cddd', '6563353', '314151351'),
-(2, 'usu@gmail.com', '[]', '$2y$10$dJ35teZPu1SpxnJe/GOCqOTzNhpDlWiO2PVypngyfd1F3O6EN3tZK', 'usu', 'ssdaxda', '76646464', '764374574'),
-(3, 'editado@gmail.com', '[]', '$2y$10$Pcr3ptJic9MfMApbXMJLHunGwIi.MLAxE6zVrsYKIjmHozueLfQyC', 'editado', 'edit', '6542332', '7426262457'),
-(4, 'nuevo@gmail.com', '[]', '$2y$10$0ts4NphC24uwB4KjUYNd4.bHIsEZiMWHlm1R07vhc35nC5IBvo.X2', 'aaaa', 'bbbb', '656353', '65337373'),
-(5, 'estoyactu@gmail.com', '[]', '$2y$10$XfePoaTYTSQYTexy3.DskOictxNyPmBWuiDm/nOAMjx3Nizo9hHKi', 'actu', 'actu', '63432333', '4763373577');
+(16, 'testing@gmail.com', '[]', '$2y$10$kjOjWyKJmqy9arLPzSl1I.8VGYYoSAPku07Iy0v80fH50jQWzjMfe', 'ra', 'da', '654333212', '555555555555');
 
 --
 -- Indexes for dumped tables
@@ -162,7 +217,8 @@ INSERT INTO `usuario` (`id`, `email`, `roles`, `password`, `nombre`, `apellidos`
 ALTER TABLE `cita`
   ADD PRIMARY KEY (`id`),
   ADD KEY `IDX_3E379A62A7FB1C0C` (`medico_id`),
-  ADD KEY `IDX_3E379A62DB38439E` (`usuario_id`);
+  ADD KEY `IDX_3E379A62DB38439E` (`usuario_id`),
+  ADD KEY `IDX_3E379A62C51CDF3F` (`sala_id`);
 
 --
 -- Indexes for table `doctrine_migration_versions`
@@ -184,6 +240,18 @@ ALTER TABLE `medico`
   ADD KEY `IDX_34E5914C16A490EC` (`especialidad_id`);
 
 --
+-- Indexes for table `otro`
+--
+ALTER TABLE `otro`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sala`
+--
+ALTER TABLE `sala`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
@@ -198,7 +266,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `especialidad`
@@ -213,10 +281,22 @@ ALTER TABLE `medico`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `otro`
+--
+ALTER TABLE `otro`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `sala`
+--
+ALTER TABLE `sala`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
@@ -227,6 +307,7 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `cita`
   ADD CONSTRAINT `FK_3E379A62A7FB1C0C` FOREIGN KEY (`medico_id`) REFERENCES `medico` (`id`),
+  ADD CONSTRAINT `FK_3E379A62C51CDF3F` FOREIGN KEY (`sala_id`) REFERENCES `sala` (`id`),
   ADD CONSTRAINT `FK_3E379A62DB38439E` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
 
 --
