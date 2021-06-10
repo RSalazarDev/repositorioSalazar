@@ -38,9 +38,9 @@ anio: string;
     this.obtenerMedicos();
     this.obtenerSalas();
     var dateObj = new Date();
-    var month = dateObj.getUTCMonth() + 1; //months from 1-12
-    var day = dateObj.getUTCDate();
-    var year = dateObj.getUTCFullYear();
+    var month = dateObj.getMonth()+1; //months from 1-12
+    var day = dateObj.getDate()+1;
+    var year = dateObj.getFullYear();
     if (month<10) {
       this.mes = String("0"+month);
     }else{
@@ -49,7 +49,7 @@ anio: string;
     if (day<10) {
       this.dia=String("0"+day);
     }else{
-      this.dia = String(month);
+      this.dia = String(day);
     }
 
     this.anio = String(year);
@@ -105,14 +105,15 @@ anio: string;
   }
 
   concertarCita() {
-    console.log(this.formularioCita.value);
-
+    
     this.servCitas.registrar(this.formularioCita.value).subscribe(
       (respuesta) => {
-        console.log(respuesta);
+        console.log(respuesta)
         this.obtenerCitas();
       },
       (error) => console.log(error)
+
+      
     );
   }
 

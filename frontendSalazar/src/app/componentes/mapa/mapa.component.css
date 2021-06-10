@@ -5,15 +5,19 @@
 }
 
 #zona:hover {
-  background-color: rgb(218, 218, 218);
-  border: 10px;
+  background-color: rgb(236, 236, 236);
+  cursor: pointer;
+  
 }
 
-
-
+ul{
+  border: 0.3vh;
+  border-style: double;
+  border-color: rgb(8, 111, 228);
+}
 
 .row{
-  
+  margin-top: auto;
   margin: 3%;
 }
 

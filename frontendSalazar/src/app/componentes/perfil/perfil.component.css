@@ -11,6 +11,14 @@ form{
     margin: auto;
 }
 
+.alert{
+    
+        width: 60%;
+        margin: auto;
+        font-size: 2em;
+      
+}
+
 
 .cont{
     width: 70%;

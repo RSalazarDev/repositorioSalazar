@@ -14,7 +14,6 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use DateTime;
 
-
 class UsuarioController extends AbstractController {
 
     /**
@@ -26,7 +25,7 @@ class UsuarioController extends AbstractController {
         $email = $data['email'];
         $pwd = $data['password'];
 
-        
+
         if ($email && $pwd) {
             $usuario = $this->getDoctrine()
                     ->getRepository(Usuario::class)
@@ -67,13 +66,22 @@ class UsuarioController extends AbstractController {
         $telefono = $data['telefono'];
         $social = $data['social'];
 
+        $usuario = $this->getDoctrine()
+                ->getRepository(Usuario::class)
+                ->findOneBy(['email' => $email]);
+
+        if ($usuario) {
+
+            return new JsonResponse(['error' => 'El email ya existe'], Response::HTTP_BAD_REQUEST);
+        }
+
 
         if (empty($email) || empty($password) || empty($nombre) || empty($apellidos) || empty($social) || empty($telefono)) {
             return new JsonResponse(['error' => 'Faltan parámetros'], Response::HTTP_PARTIAL_CONTENT);
         }
 
-        
-        
+
+
         $usuario = new Usuario();
         $usuario->setEmail($email);
         $usuario->setNombre($nombre);
@@ -129,15 +137,30 @@ class UsuarioController extends AbstractController {
 
         if ($usuario) {
             $data = json_decode($request->getContent(), true);
-            
-            
+
+            $email = $data['email'];
+            $password = $data['password'];
             $nombre = $data['nombre'];
             $apellidos = $data['apellidos'];
             $telefono = $data['telefono'];
             $social = $data['social'];
-            
 
-            
+
+            $usuariotmp = $this->getDoctrine()
+                    ->getRepository(Usuario::class)
+                    ->findOneBy(['email' => $email]);
+
+            if ($usuariotmp) {
+
+                return new JsonResponse(['error' => 'El email ya existe'], Response::HTTP_BAD_REQUEST);
+            }
+
+            if (!empty($email)) {
+                $usuario->setEmail($email);
+            }
+            if (!empty($password)) {
+                $usuario->setPassword(password_hash($password, PASSWORD_BCRYPT));
+            }
             if (!empty($nombre)) {
                 $usuario->setNombre($nombre);
             }
@@ -150,12 +173,12 @@ class UsuarioController extends AbstractController {
             if (!empty($social)) {
                 $usuario->setSeguridadSocial($social);
             }
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
             $em->persist($usuario);
             $em->flush();
             return new JsonResponse(['respuesta' => 'Usuario modificado correctamente'], Response::HTTP_OK);
@@ -174,10 +197,10 @@ class UsuarioController extends AbstractController {
 
         $usuario = $auth->getUser($credenciales, $userProvider);
 
-        if($usuario->getCitas()->count()>0){
+        if ($usuario->getCitas()->count() > 0) {
             return new JsonResponse(['error' => 'Este usuario tiene citas pendientes, cancele sus citas por favor'], Response::HTTP_UNAUTHORIZED);
         }
-        
+
         if ($usuario) {
             $em->remove($usuario);
             $em->flush();

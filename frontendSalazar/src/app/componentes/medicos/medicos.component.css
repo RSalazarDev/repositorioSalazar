@@ -3,42 +3,28 @@
     display: none;
     visibility: hidden;
   }
-
   .estiloMovil {
     display: inline-block;
     visibility: visible;
-    
     width: 100%;
     padding: 0;
   }
-
- 
-
   .a{
     width: 60%;
     margin: auto;
-    
-    
   }
-
   .btn{
       width: 100%;
       margin: 0.2vh;
-
   }
-
   h1{
       font-size: 2.2vh;
-      
   }
-
   .card{
     border-style: double;
     border-color: rgba(0, 132, 172, 0.459);
     margin-top: 2vh;
   }
-
-  
 }
 
 @media only screen and (min-width: 1051px) {

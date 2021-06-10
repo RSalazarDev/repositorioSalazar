@@ -4,14 +4,9 @@
   }
   
 }
-
-
-
   .fa-sign-in{
-    font-size: 2em;
-    
+    font-size: 2em; 
   }
-
   .navbar-toggler{
     color: white;
     border-radius: 5%;
@@ -19,12 +14,8 @@
     border-color: rgb(1, 107, 110);
   }
 
-
-
-  
   .navbar{
       
-  
   font-family: 'Cormorant Unicase', serif;
   font-size: 1.3em;
 

@@ -2,21 +2,52 @@
   display: none;
   visibility: hidden;
 }
-
-
 .alert{
   width: 60%;
   margin: auto;
   font-size: 2em;
 }
 
+.card{
+  border-style: groove;
+  border-color: cyan;
+}
+
+.w3-row-padding {
+  display:flex;
+  align-items:center;
+  }
+
+h1{
+  margin-top: 0.3em;
+}
+
+
+p{
+  font-family: 'JetBrains Mono', monospace;
+  margin: 2px;
+}
+
+.sala{
+  margin-left: 0.5em;
+}
+
+
+
+
+.container{
+  padding: 1em;
+  background-color: rgb(226, 226, 226);
+  border-radius: 2em;
+  border-style: groove;
+  border-color: rgb(0, 164, 240);
+}
 @media only screen and (max-width: 1200px) {
   #estiloDefecto {
     display: none;
     visibility: hidden;
   }
 }
-
 @media only screen and (max-width: 1200px) {
   #estiloMovil {
     display: contents;
@@ -27,6 +58,15 @@
     
   }
 
+
+
+ form{
+  padding: 1em;
+  background-color: rgb(226, 226, 226);
+  border-radius: 2em;
+  border-style: groove;
+  border-color: rgb(0, 164, 240);
+ }
   .acordeon{
     width: 100%;
     padding: 1%;
@@ -38,12 +78,10 @@
     border-color: rgb(0, 106, 177);
     
   }
-
   select{
     display:inline-block;
    
   }
-
   #medico{
     width: 100%;
   }

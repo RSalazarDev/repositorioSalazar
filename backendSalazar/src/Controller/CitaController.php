@@ -53,7 +53,7 @@ class CitaController extends AbstractController {
 
 
             if (empty($medico) || empty($fecha)) {
-                return new JsonResponse(['error' => 'Faltan parametros'], Response::HTTP_PARTIAL_CONTENT);
+                return new JsonResponse(['error' => 'Faltan parámetros'], Response::HTTP_PARTIAL_CONTENT);
             }
 
             $cita = new Cita();

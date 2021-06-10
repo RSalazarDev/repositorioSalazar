@@ -23,7 +23,8 @@ export class PerfilComponent implements OnInit {
 
   
   formEditar = this.fb.group({
-    
+    email:['', Validators.email],
+    password:['', Validators.minLength(4)],
     nombre:['', ],
     apellidos:['', ],
     telefono:['', [Validators.minLength(9),Validators.maxLength(9)]],
@@ -50,7 +51,9 @@ export class PerfilComponent implements OnInit {
         console.log(respuesta)
         this.irHacia.navigate(['/'])
       },
-      error => {console.log(error)}
+      error => {
+        this.error = error.error.error
+      }
     )}
   }
 

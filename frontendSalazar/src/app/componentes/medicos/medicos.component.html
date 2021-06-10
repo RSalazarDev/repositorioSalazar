@@ -1,10 +1,10 @@
 <div class="container estiloMovil">
     <div class="acordeon" *ngFor='let medico of medicos' >
-    <a class="btn btn-primary" data-toggle="collapse" href="#{{medico.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <a class="btn btn-primary text-primary bg-white" data-toggle="collapse" href="#{{medico.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
         {{medico.nombre}} {{medico.apellidos}}
       </a>
     <div class="collapse" id="{{medico.id}}">
-      <div class="card card-body card-accordeon">
+      <div class="card card-body card-accordeon mb-2">
         <h1>{{medico.especialidad}}</h1>
       </div>
     </div>
@@ -19,19 +19,19 @@
             <div id="nombreLabel" class="col-sm header-title">
                 Nombre
             </div>
-            <div id="apeLabel" class="col-sm header-title">
+            <div id="apeLabel" class=" col-sm header-title">
                 Apellidos
             </div>
             
         </div>
     
     <hr>
-    <div class="card mt-4 mb-3 py-3 px-4 text-white bg-secondary border-success" *ngFor='let medico of medicos' >
+    <div class="card py-4 bg-white border-primary text" *ngFor='let medico of medicos' >
         <div class="row">
-            <div class="col-sm" id="nombre">
+            <div class="ml-3 col-sm text-primary" id="nombre">
                 {{ medico.nombre }}
             </div>
-            <div class="col-sm" id="apellidos">
+            <div class="ml-3 col-sm text-primary" id="apellidos">
                 {{ medico.apellidos }}
             </div>
             

@@ -11,10 +11,10 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {}
 
   tabCarta() {
-    window.open('http://localhost:4200/assets/public/Carta.jpg');
+    window.open('http://localhost:4200/assets/public/Carta.png');
   }
 
   tabCv() {
-    window.open('http://localhost:4200/assets/public/Curriculum.jpg');
+    window.open('http://localhost:4200/assets/public/Curriculum.png');
   }
 }
